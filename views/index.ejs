@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESTful API</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>QUORA Posts</h1>
+    <% for (const post of posts) { %>
+       <div class="post">
+        <h3 class="user">@<%= post.username %></h3>
+        <h4 class="content"><%= post.content %></h4>
+
+        <!-- link to redirect a page to display post in detail  -->
+        
+        <a href="/posts/<%= post.id %>">See in Details</a>
+        <!-- link to redirect a page to edit post  -->
+        <a href="/posts/<%= post.id %>/edit">Edit</a>
+
+        <!-- creating form to make a delete request for related post -->
+        <form action="/posts/<%= post.id %>?_method=DELETE" method="post">
+            <button type="submit">Delete</button>
+        </form>
+        
+       </div> 
+    <% } %>
+    <br>
+    <br>
+    <a href="/posts/new">Click to add new Post</a>
+    <script>
+        console.log("Hello World");
+    </script>
+</body>
+</html>
